@@ -33,4 +33,24 @@ public class FirstController {
 
         return "first/goodbye_world";
     }
+
+    @GetMapping("/calculator")
+    public String pageCulc(@RequestParam("a") int a,
+                           @RequestParam("b") int b,
+                           @RequestParam("action") String action,
+                           Model model){
+
+        double result;
+        switch (action) {
+            case ("multiplication") -> result = a * b;
+            case ("addition") -> result = a + b;
+            case ("division") -> result = a / (double) b;
+            case ("subtraction") -> result = a - b;
+            default -> result = 0;
+        }
+
+        model.addAttribute("result", result);
+
+        return "first/calculator";
+    }
 }
