@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+//import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/people")
 public class PeopleController {
@@ -40,7 +42,7 @@ public class PeopleController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("person") @Valid Person person,
+    public String create(@ModelAttribute("person")  Person person,
                          BindingResult bindingResult){
         if(bindingResult.hasErrors())
             return "people/new";
